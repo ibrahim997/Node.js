@@ -29,11 +29,9 @@ var fs = require('fs');
 
 // Node.js Way of Doing Things Below (Fix to the preceeding example)
 fs.open('info.txt', 'r', (err, handle) => {
-    var bug = new Buffer(100000);
+    var buf = new Buffer(100000);
     fs.read(handle, buf, 0, 100000, null, (err, length) => {
         console.log(buf.toString('utf8', 0, length));
         fs.close(handle, () => { /* Don't care */});
     });
 });
-
-// Error Handling and Asynchronous Functions
